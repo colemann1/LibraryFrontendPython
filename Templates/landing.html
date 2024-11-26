@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <p><a href="{{url_for('about_page')}}">About</a></p>
+    <title>Library Manager</title> 
+</head> 
+<body> 
+<h2>Library Management System</h2>
+<h3>Now 50% more <i>bargainous</i>!</h3>
+<ul>
+    <li>Now a web application</li>
+    <li>Using Python instead of C#</li>
+</ul> 
+  
+<br /> 
+
+<h3> There are many functions available </h3>
+    (Here are a few of them)
+    <br />
+    <br />
+    <nav> 
+        <a href="{{ url_for('allbooks') }}">Manage books</a><br />
+        <br />
+        <a href="{{ url_for('allusers') }}">Manage users</a><br />
+        <br />
+        <!-- <a href="{{ url_for('add_book') }}">Add a new book to the library.</a> -->
+    </nav> 
+</body> 
+</html>

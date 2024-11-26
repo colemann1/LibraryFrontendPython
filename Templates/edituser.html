@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+    <h1>Edit User</h1>
+    <nav> 
+        <a href="{{ url_for('index_page') }}">Return to main page.</a><br /><br />
+        <a href="{{ url_for('allusers') }}">Return to 'all users' list</a><br /><br />
+    </nav>
+    <form action="{{ url_for('edit_user', user_id=user['ID']) }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ user.get('Name', '') }}" required>
+        <br />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ user.get('Email', '') }}" required>
+        <br />
+        <button type="submit">Update User</button>
+    </form>
+</body>
+</html>

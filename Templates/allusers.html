@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<body>
+    <h1>All Users</h1>
+    <nav> 
+        <a href="{{ url_for('index_page') }}">Return to main page.</a><br /><br />
+        <a href="{{ url_for('add_user') }}">Add a new user to the library.</a><br /><br />
+    </nav>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user['ID'] }}</td>
+                <td>{{ user['Name'] }}</td>
+                <td>{{ user['Email'] }}</td>
+                <td>
+                    <form action="{{ url_for('edit_user', user_id=user['ID']) }}" method="get" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="{{ url_for('delete_user', user_id=user['ID']) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

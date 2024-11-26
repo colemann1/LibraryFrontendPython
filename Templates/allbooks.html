@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Books</title>
+</head>
+<body>
+    <h1>All Books</h1>
+    <nav> 
+        <a href="{{ url_for('index_page') }}">Return to main page.</a><br /><br />
+    </nav>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Library Books</title>
+    </head>
+    <body>
+        <h1>List of Books</h1>
+        <nav> 
+            <a href="{{ url_for('add_book') }}">Add a new book to the library.</a><br /><br />
+        </nav>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for _, row in tables[0].iterrows() %}
+                <tr>
+                    <td>{{ row['ID'] }}</td>
+                    <td>{{ row['Title'] }}</td>
+                    <td>{{ row['Author'] }}</td>
+                    <td>{{ row['ISBN'] }}</td>
+                    <td>{{ row['Status'] }}</td>
+                    <td>
+                        <!-- Edit and Delete actions -->
+                        <form action ="{{ url_for('edit_book', book_id=row['ID']) }}" method="post" style="display:inline;">
+                            <button type ="submit">Edit</button>
+                        </form>
+                        <form action="{{ url_for('delete_book', book_id=row['ID']) }}" method="post" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+    
+                        <!-- Check Out or Return actions based on book status -->
+                        {% if row['Status'] == 'Available' %}
+                            <form action="{{ url_for('checkout_book', book_id=row['ID']) }}" method="post" style="display:inline;">
+                                <button type="submit">Check Out</button>
+                            </form>
+                        {% elif row['Status'] == 'Checked Out' %}
+                            <form action="{{ url_for('return_book', book_id=row['ID']) }}" method="post" style="display:inline;">
+                                <button type="submit">Return</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <nav> 
+            <a href="{{ url_for('index_page') }}">Return to main page</a>
+        </nav>
+    </body>
+    </html>
