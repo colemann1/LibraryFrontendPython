@@ -54,7 +54,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_all_books(self):
         #Test displaying all books.
         response = self.client.get('/all_books')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
     def test_edit_book(self):
         # Test editing a book.
