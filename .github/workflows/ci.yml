@@ -28,10 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install flask pandas
 
-    # Ensure Flask knows where to find templates (optional in some cases)
-    - name: Set application variable
-      run: echo "FLASK_APP=frontend.py" >> $GITHUB_ENV
-
     # Run tests
     - name: Run tests with unittest
       run: |
