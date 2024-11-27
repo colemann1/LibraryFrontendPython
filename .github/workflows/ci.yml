@@ -1,4 +1,4 @@
-name: Python application
+name: LibraryFrontendPython CI
 
 on:
   push:
@@ -28,7 +28,6 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        export PYTHONPATH=$PYTHONPATH:./
         pytest tests/testroutes.py --junitxml=pytest-report.xml
 
     - name: Upload test report
