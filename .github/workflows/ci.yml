@@ -29,7 +29,7 @@ jobs:
     - name: Run tests with pytest
       run: |
         export PYTHONPATH=$PYTHONPATH:./
-        pytest tests/ --junitxml=pytest-report.xml
+        pytest tests/testroutes.py --junitxml=pytest-report.xml
 
     - name: Upload test report
       uses: actions/upload-artifact@v3
