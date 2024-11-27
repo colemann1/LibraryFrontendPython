@@ -35,7 +35,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
     - name: Run tests with pytest
-      run: pytest /tests/testroutes.py
+      run: pytest tests/testroutes.py
 
     - name: Display test results
       if: always()
