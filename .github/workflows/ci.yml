@@ -28,7 +28,7 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        pytest tests/testroutes.py --junitxml=pytest-report.xml
+        pytest testroutes.py --junitxml=pytest-report.xml
 
     - name: Upload test report
       uses: actions/upload-artifact@v3
